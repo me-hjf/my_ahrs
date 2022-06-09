@@ -7,13 +7,13 @@ R2D = 180/pi;
 D2R = pi/180;
 
 format long;
-path = '..\dataset\UranusData.csv';  %data_20220505_160203 data_20220505_154004
+path = '..\dataset_tgy\8\UranusData.csv';  %data_20220505_160203 data_20220505_154004
 %data = load(path);
 data = csvread(path, 1, 1);
  
 acc = data(:,2:4)*9.82;
 gyr = data(:,5:7) * D2R;
-hz = 200;
+hz = 400;
 dt = 1/hz;
 ll = length(gyr);
 time = 1:ll;
@@ -42,7 +42,7 @@ for i=1:ll
    
   ahrs_kf.dt =0.01;
   ahrs_kf = eskf_test(Imu_qua,ahrs_kf);
-  Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
+    Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
   ahrs_kf.xk(1) = 0.0;ahrs_kf.xk(2) = 0.0;ahrs_kf.xk(3) = 0.0;
   last_dtha = dtha;  
   temp_qua(i,:) = Imu_qua.q;
