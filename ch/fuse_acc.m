@@ -17,7 +17,7 @@ function ahrs_kf = fuse_acc(imu_qua,ahrs_kf0)
   Rk=diag([1;1])*rk;
 
   if(norm(imu_qua.acc)>10.05||norm(imu_qua.acc)<9.75||norm(imu_qua.gyr)>deg2rad(3.4))
-      Rk = Rk*1000;
+      Rk = Rk*1500;
   end    
 
   

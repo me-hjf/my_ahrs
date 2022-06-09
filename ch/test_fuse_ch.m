@@ -42,7 +42,7 @@ for i=1:ll
    
   ahrs_kf.dt =0.01;
   ahrs_kf = eskf_test(Imu_qua,ahrs_kf);
-    Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
+%   Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
   ahrs_kf.xk(1) = 0.0;ahrs_kf.xk(2) = 0.0;ahrs_kf.xk(3) = 0.0;
   last_dtha = dtha;  
   temp_qua(i,:) = Imu_qua.q;
