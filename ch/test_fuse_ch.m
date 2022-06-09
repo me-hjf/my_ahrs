@@ -56,34 +56,36 @@ end
 
 
 figure
-subplot(2, 1, 1);
+subplot(3, 1, 1);
 plot(time(1:end-1)*dt, diff(acc));xlabel('时间/s'),ylabel('acc');
-subplot(2, 1, 2);
+subplot(3, 1, 2);
 plot(time(1:end-1)*dt-1, diff(gyr));xlabel('时间/s'),ylabel('gyr');
+subplot(3, 1, 3);
+plot(time*dt,out_put.pk); title('pitch');xlabel('时间/s'),ylabel('P阵');
 
 figure
 subplot(3, 1, 1);
 hold on
-plot(time*dt,tem_angle(:,1)*57.3); title('pitch');xlabel('时间/s'),ylabel('角度/°');
+plot(time*dt,tem_angle(:,1)*R2D); title('pitch');xlabel('时间/s'),ylabel('角度/°');
 plot(time*dt,data(:,12));  xlabel('时间/s'),ylabel('角度/°'); 
 legend("matlab", "IMU");
 
 subplot(3, 1, 2);
 hold on
-plot(time*dt,tem_angle(:,2)*57.3); title('roll'); xlabel('时间/s'),ylabel('角度/°');
+plot(time*dt,tem_angle(:,2)*R2D); title('roll'); xlabel('时间/s'),ylabel('角度/°');
 plot(time*dt,data(:,11)); xlabel('时间/s'),ylabel('角度/°');
 legend("matlab", "IMU");
 
 
 subplot(3, 1, 3);
 hold on
-plot(time*dt,tem_angle(:,3)*57.3); title('yaw'); 
+plot(time*dt,tem_angle(:,3)*R2D); title('yaw'); 
 plot(time*dt,data(:,13));xlabel('时间/s'),ylabel('角度/°');
 legend("matlab", "IMU");
 
 linkaxes
 
-fprintf("yaw  matlab:%.3f   IMU:%.3f\r\n", tem_angle(end,3)*57.3, data(end,13));
+fprintf("yaw  matlab:%.3f   IMU:%.3f\r\n", tem_angle(end,3)*R2D, data(end,13));
 
 
 
