@@ -12,14 +12,14 @@ function ahrs_kf = fuse_acc(imu_qua,ahrs_kf0)
   
   H = symm(fn);
   H_acc = H(1:2,:);
-%   H_acc = [H_acc zeros(2,1)]
-%   rk =0.1;
-%   Rk=diag([1;1])*rk;
-% 
-%   if(norm(imu_qua.acc)>10.05||norm(imu_qua.acc)<9.75||norm(imu_qua.gyr)>deg2rad(3.4))
-%       Rk = Rk*200;
-%   end    
-    Rk=diag([1;1])*10;
+
+  rk =0.1;
+  Rk=diag([1;1])*rk;
+
+  if(norm(imu_qua.acc)>10.05||norm(imu_qua.acc)<9.75||norm(imu_qua.gyr)>deg2rad(3.4))
+      Rk = Rk*200;
+  end    
+%     Rk=diag([1;1])*10;
   
   Kk = ahrs_kf0.Pxk*H_acc'*inv(H_acc*ahrs_kf0.Pxk*H_acc'+Rk);
   ahrs_kf0.xk = ahrs_kf0.xk + Kk*innov_acc; 

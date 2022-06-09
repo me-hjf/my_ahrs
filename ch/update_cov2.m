@@ -6,7 +6,7 @@ function ahrs_kf =  update_cov2(imu_qua,ahrs_kf0)
    Ftk = Ftk + eye(3);
    
    %err_cross =0.00000;
-   err_kk = 0.001;
+   err_kk = 0.0001;
   % dtha_n = imu_qua.Rnb*imu_qua.dtha;
   dtha_n = imu_qua.dtha;
 
