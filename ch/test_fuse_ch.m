@@ -7,7 +7,7 @@ R2D = 180/pi;
 D2R = pi/180;
 
 format long;
-path = '..\UranusData.csv';  %data_20220505_160203 data_20220505_154004
+path = '..\dataset\UranusData.csv';  %data_20220505_160203 data_20220505_154004
 %data = load(path);
 data = csvread(path, 1, 1);
  
@@ -54,6 +54,12 @@ for i=1:ll
   
 end
 
+
+figure
+subplot(2, 1, 1);
+plot(time(1:end-1)*dt, diff(acc));xlabel('时间/s'),ylabel('acc');
+subplot(2, 1, 2);
+plot(time(1:end-1)*dt-1, diff(gyr));xlabel('时间/s'),ylabel('gyr');
 
 figure
 subplot(3, 1, 1);
