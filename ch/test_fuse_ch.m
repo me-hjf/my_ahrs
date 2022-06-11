@@ -1,18 +1,18 @@
 clear;
 clc;
- close all;
+
 
  
 R2D = 180/pi;
 D2R = pi/180;
 
 format long;
-path = '..\dataset_tgy\8\UranusData.csv';  %data_20220505_160203 data_20220505_154004
+path = '..\dataset_tgy\0\UranusData0.csv';  %data_20220505_160203 data_20220505_154004
 %data = load(path);
 data = csvread(path, 1, 1);
  
 acc = data(:,2:4)*9.82;
-gyr = data(:,5:7) * D2R;
+gyr = data(:,5:7) /57.3;
 hz = 400;
 dt = 1/hz;
 ll = length(gyr);
@@ -42,7 +42,7 @@ for i=1:ll
    
   ahrs_kf.dt =0.01;
   ahrs_kf = eskf_test(Imu_qua,ahrs_kf);
-%   Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
+  Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
   ahrs_kf.xk(1) = 0.0;ahrs_kf.xk(2) = 0.0;ahrs_kf.xk(3) = 0.0;
   last_dtha = dtha;  
   temp_qua(i,:) = Imu_qua.q;
@@ -55,29 +55,30 @@ for i=1:ll
 end
 
 
-figure
-subplot(3, 1, 1);
-plot(time(1:end-1)*dt, diff(acc));xlabel('时间/s'),ylabel('acc');
-subplot(3, 1, 2);
-plot(time(1:end-1)*dt-1, diff(gyr));xlabel('时间/s'),ylabel('gyr');
-subplot(3, 1, 3);
-plot(time*dt,out_put.pk); title('pitch');xlabel('时间/s'),ylabel('P阵');
+% figure
+% subplot(3, 1, 1);
+% plot(time(1:end-1)*dt, diff(acc));xlabel('时间/s'),ylabel('acc');
+% subplot(3, 1, 2);
+% plot(time(1:end-1)*dt-1, diff(gyr));xlabel('时间/s'),ylabel('gyr');
+% subplot(3, 1, 3);
+% plot(time*dt,out_put.pk()); title('pitch');xlabel('时间/s'),ylabel('P阵');
 
 figure
-subplot(3, 1, 1);
+plot(time*dt,out_put.pk(1:2,:)); title('pitch');xlabel('时间/s'),ylabel('P阵');
+
+figure
 hold on
 plot(time*dt,tem_angle(:,1)*R2D); title('pitch');xlabel('时间/s'),ylabel('角度/°');
 plot(time*dt,data(:,12));  xlabel('时间/s'),ylabel('角度/°'); 
 legend("matlab", "IMU");
 
-subplot(3, 1, 2);
+figure
 hold on
 plot(time*dt,tem_angle(:,2)*R2D); title('roll'); xlabel('时间/s'),ylabel('角度/°');
 plot(time*dt,data(:,11)); xlabel('时间/s'),ylabel('角度/°');
 legend("matlab", "IMU");
 
-
-subplot(3, 1, 3);
+figure
 hold on
 plot(time*dt,tem_angle(:,3)*R2D); title('yaw'); 
 plot(time*dt,data(:,13));xlabel('时间/s'),ylabel('角度/°');
@@ -87,6 +88,8 @@ linkaxes
 
 fprintf("yaw  matlab:%.3f   IMU:%.3f\r\n", tem_angle(end,3)*R2D, data(end,13));
 
+figure
+plot(time*dt,gyr(:,1:3));
 
 
 

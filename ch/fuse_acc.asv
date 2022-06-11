@@ -10,7 +10,9 @@ function ahrs_kf = fuse_acc(imu_qua,ahrs_kf0)
   innov_acc(1) = innov_acc1(1);
   innov_acc(2) = innov_acc1(2);
   
-
+  if(fabs(innov_acc(1))>)
+      
+  end
   
   H = symm(fn);
   H_acc = H(1:2,:);
