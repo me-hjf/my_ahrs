@@ -7,7 +7,7 @@ R2D = 180/pi;
 D2R = pi/180;
 
 format long;
-path = '..\dataset_tgy\0\UranusData0.csv';  %data_20220505_160203 data_20220505_154004
+path = '..\dataset\t\8\UranusData8.csv';  %data_20220505_160203 data_20220505_154004
 %data = load(path);
 data = csvread(path, 1, 1);
  
@@ -64,7 +64,7 @@ end
 % plot(time*dt,out_put.pk()); title('pitch');xlabel('时间/s'),ylabel('P阵');
 
 figure
-plot(time*dt,out_put.pk(1:2,:)); title('pitch');xlabel('时间/s'),ylabel('P阵');
+plot(time*dt,out_put.pk(1:2,:)); title('p');xlabel('时间/s'),ylabel('P阵');
 
 figure
 hold on
@@ -87,9 +87,12 @@ legend("matlab", "IMU");
 linkaxes
 
 fprintf("yaw  matlab:%.3f   IMU:%.3f\r\n", tem_angle(end,3)*R2D, data(end,13));
+% 
+% figure
+% plot(time*dt,gyr(:,1:3));
 
 figure
-plot(time*dt,gyr(:,1:3));
+plot(time*dt,(acc(:,1:3)));
 
 
 
