@@ -13,4 +13,6 @@ ahrs_kf.bad_accx=0;
 ahrs_kf.bad_accy=0;
 ahrs_kf.bad_accz=0;
 ahrs_kf.Q_imu = [0;0;0];
+ahrs_kf.good_acc=0;
+ahrs_kf.bad_acc=0;
 end

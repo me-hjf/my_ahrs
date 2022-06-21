@@ -7,7 +7,7 @@ R2D = 180/pi;
 D2R = pi/180;
 
 format long;
-path = '..\dataset\t\8\UranusData8.csv';  %data_20220505_160203 data_20220505_154004
+path = '..\dataset\t\0\UranusData.csv';  %data_20220505_160203 data_20220505_154004
 %data = load(path);
 data = csvread(path, 1, 1);
  
@@ -42,7 +42,7 @@ for i=1:ll
    
   ahrs_kf.dt =0.01;
   ahrs_kf = eskf_test(Imu_qua,ahrs_kf);
-  Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
+ Imu_qua = eskf_feedback(Imu_qua,ahrs_kf);
   ahrs_kf.xk(1) = 0.0;ahrs_kf.xk(2) = 0.0;ahrs_kf.xk(3) = 0.0;
   last_dtha = dtha;  
   temp_qua(i,:) = Imu_qua.q;
@@ -88,8 +88,8 @@ linkaxes
 
 fprintf("yaw  matlab:%.3f   IMU:%.3f\r\n", tem_angle(end,3)*R2D, data(end,13));
 % 
-% figure
-% plot(time*dt,gyr(:,1:3));
+figure
+plot(time*dt,gyr(:,1:3));
 
 figure
 plot(time*dt,(acc(:,1:3)));
