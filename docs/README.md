@@ -6,9 +6,8 @@
 
 test
 
-[file_name](ch0x0/CH0X0_um_cn.md)
+[CH0X0_um_cn](ch0x0/CH0X0_um_cn.md)
 
-[file_name](ch0x0/CH0X0_um_cn.pdf)
-
+[CH0X0_um_cn](./CH0X0_um_cn.pdf)
 
 
