@@ -1,0 +1,7 @@
+[0903/160118:INFO:mailmaster_exe.cpp(96)] Start ======================================================
+[0903/160118:INFO:mailmaster_exe.cpp(97)] Commandline: --type=renderer --force-device-scale-factor=1.25 --no-sandbox --lang=en-US --lang=zh-CN --log-file="C:\Users\18612\AppData\Local\Netease\MailMaster\logs\web.log" --product-version="Chrome/49.0.2623.110 MailMasterPC/4.17.5.1007" --enable-pinch --device-scale-factor=1.25 --num-raster-threads=4 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-gpu-compositing --channel="9800.0.1049921236\1315687232" /prefetch:1
+[0903/160118:INFO:mailmaster_exe.cpp(57)] Environment: {"CPULogicalCores":16,"CPUModel":"11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz","Mac":["94E23C00F145"],"Memory":"4899/16122M","OSArchitecture":"x86_64","OSVersion":"10.0.22000"}
+[0903/160118:INFO:mailmaster_exe.cpp(58)] Exe.Path: C:\Program Files (x86)\Netease\MailMaster\Application\mailmaster.exe
+[0903/160118:INFO:mailmaster_exe.cpp(61)] Last system shutdown time: 2022-09-01 03:34:37.865 UTC
+[0903/160118:INFO:mailmaster_exe.cpp(63)] System start time: 2022-09-01 03:34:50.000 UTC
+[0903/160118:INFO:main_dll_loader.cpp(68)] Version: 4.17.5.1007
