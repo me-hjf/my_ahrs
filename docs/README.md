@@ -4,9 +4,8 @@
 
 
 
-
-
-[CH0X0_um_cn](ch0x0/CH0X0_um_cn.pdf ':ignore')
+* [CH0x0系列IMU资料](ch0x0/README.md)
+* [CH10x系列IMU资料](ch10x/README.md)
 
 
 
